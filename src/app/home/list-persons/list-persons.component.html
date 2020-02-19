@@ -1,0 +1,32 @@
+    <div class="card py-3 mt-5 ml-3">
+        <h1 class="text-center">Listado de personas</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let elem of personas, let i = index ">
+                    <td>{{elem.cedula}}</td>
+                    <td>{{elem.nombre}}</td>
+                    <td>{{elem.apellido}}</td>
+                    <td>{{elem.telefono}}</td>
+                    <td>{{elem.email}}</td>
+                    <td>{{elem.edad}}</td>
+                    <td>
+                        <button (click)="exportData(i)" class="btn btn-primary"><i class="fas fa-edit"></i>
+                        </button>
+                        <button (click)="deletePerson(i)" class="btn btn-danger"><i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

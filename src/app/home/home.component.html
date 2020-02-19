@@ -1,0 +1,113 @@
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card px-3 py-3 mt-5 text-center">
+                <h1>Formulario de registro</h1>
+                <form [formGroup]="fg" >
+                    <div class="form-group">
+                        <input type="text" formControlName="cedula" class="form-control" placeholder="Escriba su cedula">
+                    </div>
+                    <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
+                        <div class="text-danger text-center" *ngIf="cedula.errors.required">
+                            <p>Este campo es requerido.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="cedula.errors.minlength">
+                            <p>Debes insertar 11 carácteres.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="cedula.errors.maxlength">
+                            <p>Debes insertar 11 carácteres.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="nombre" class="form-control" placeholder="Escriba su nombre">
+                    </div>
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div class="text-danger text-center" *ngIf="nombre.errors.required">
+                            <p>Este campo es requerido.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="nombre.errors.minlength">
+                            <p>Debes insertar al menos 3 carácteres.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="nombre.errors.maxlength">
+                            <p>Debes insertar menos de 10 carácteres.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="apellido" class="form-control" placeholder="Escriba su apellido">
+                    </div>
+                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                        <div class="text-danger text-center" *ngIf="apellido.errors.required">
+                            <p>Este campo es requerido.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="apellido.errors.minlength">
+                            <p>Debes insertar al menos 3 carácteres.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="apellido.errors.maxlength">
+                            <p>Debes insertar menos de 10 carácteres.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="telefono" class="form-control" placeholder="Escriba su telefono">
+                    </div>
+                    <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                        <div class="text-danger text-center" *ngIf="telefono.errors.required">
+                            <p>Este campo es requerido.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="telefono.errors.minlength">
+                            <p>Debes insertar 10 carácteres.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="telefono.errors.maxlength">
+                            <p>Debes insertar 10 carácteres.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" formControlName="email" class="form-control" placeholder="Escriba su email">
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div class="text-danger text-center" *ngIf="email.errors.required">
+                            <p>Este campo es requerido.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="email.errors.pattern">
+                            <p>Debes insertar al menos 10 carácteres.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="email.errors.maxlength">
+                            <p>Debes insertar menos de 30 carácteres.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
+                            <p>Debes insertar un email válido.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="edad" class="form-control" placeholder="Escriba su edad">
+                    </div>
+                    <div *ngIf="edad.invalid && (edad.dirty || edad.touched)">
+                        <div class="text-danger text-center" *ngIf="edad.errors.required">
+                            <p>Este campo es requerido.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="edad.errors.minlength">
+                            <p>Debes insertar al menos 1 carácter.</p>
+                        </div>
+                        <div class="text-danger text-center" *ngIf="edad.errors.maxlength">
+                            <p>Debes insertar menos de 3 carácteres.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" *ngIf="comprobar == false" (click)="SavePerson()" class="btn btn-primary" [disabled]="fg.invalid"><i class="fas fa-plus-circle"></i>
+                            Añadir Persona
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" *ngIf="comprobar == true" (click)="updatePerson()" class="btn btn-success" [disabled]="fg.invalid"><i class="fas fa-edit"></i>
+                            Modificar Persona
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+                <app-list-persons></app-list-persons>
+        </div>
+    </div>
+</div>
